@@ -4,7 +4,6 @@ services:
     env: python
     plan: free
     buildCommand: bash myblog/build.sh
-    startCommand: gunicorn myblog.wsgi:application --bind 0.0.0.0:$PORT
     envVars:
       - key: PYTHON_VERSION
         value: 3.13.7
