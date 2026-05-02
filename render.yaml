@@ -3,11 +3,9 @@ services:
     name: django-blog
     env: python
     plan: free
-    buildCommand: bash myblog/build.sh
+    buildCommand: python -m pip install -r requirements.txt && python manage.py collectstatic --noinput && python manage.py migrate
     startCommand: python -m gunicorn myblog.wsgi:application --bind 0.0.0.0:$PORT
     envVars:
-      - key: PYTHON_VERSION
-        value: 3.13.7
       - key: DEBUG
         value: "False"
       - key: ALLOWED_HOSTS
